@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from "@mui/system";
+import React from "react";
+import CounterManagement from "./containers/CounterManagement";
+import CustomerView from "./containers/CustomerView";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    return (
+        <Box
+            sx={{
+                my: 15,
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+            }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+            <CustomerView />
+            <CounterManagement />
+        </Box>
+    );
 }
 
 export default App;
