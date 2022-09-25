@@ -1,5 +1,5 @@
 const ENVIRONMENT = {
-    baseApi: "http://localhost:3000",
+    baseApi: "https://desolate-journey-71947.herokuapp.com",
 };
 
 export default ENVIRONMENT;
