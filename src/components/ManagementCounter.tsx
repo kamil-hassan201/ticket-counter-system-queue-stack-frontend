@@ -11,6 +11,8 @@ interface ManagementCounterProps {
     counter: TCounter;
     handleGoOffline: (num: number) => void;
     handleGoOnline: (num: number) => void;
+    handleCompleteCurrent: (num: number) => void;
+    handleCallNext: (num: number) => void;
 }
 
 export default function ManagementCounter(props: ManagementCounterProps) {
@@ -50,6 +52,9 @@ export default function ManagementCounter(props: ManagementCounterProps) {
                             sx={{ mx: "auto" }}
                             variant="outlined"
                             size="medium"
+                            onClick={() =>
+                                props.handleCompleteCurrent(props.counter.num)
+                            }
                         >
                             Comp Curr
                         </Button>
@@ -57,6 +62,9 @@ export default function ManagementCounter(props: ManagementCounterProps) {
                             sx={{ mx: "auto" }}
                             variant="outlined"
                             size="medium"
+                            onClick={() =>
+                                props.handleCallNext(props.counter.num)
+                            }
                         >
                             Call Next
                         </Button>

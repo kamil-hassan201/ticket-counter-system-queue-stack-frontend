@@ -8,6 +8,8 @@ interface ManagementViewProps {
     counters: TCounter[] | undefined;
     handleGoOffline: (num: number) => void;
     handleGoOnline: (num: number) => void;
+    handleCompleteCurrent: (num: number) => void;
+    handleCallNext: (num: number) => void;
 }
 
 export default function ManagementView(props: ManagementViewProps) {
@@ -19,6 +21,8 @@ export default function ManagementView(props: ManagementViewProps) {
                     <ManagementCounter
                         handleGoOffline={props.handleGoOffline}
                         handleGoOnline={props.handleGoOnline}
+                        handleCompleteCurrent={props.handleCompleteCurrent}
+                        handleCallNext={props.handleCallNext}
                         counter={counter}
                     />
                 ))}

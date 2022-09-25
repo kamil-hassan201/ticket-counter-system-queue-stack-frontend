@@ -30,7 +30,9 @@ export default function CustomerCounter(props: TCounter) {
                         <Typography variant="body1" component="div">
                             {props?.status === "offline"
                                 ? "Off Line"
-                                : props?.currentCard}
+                                : props?.currentCard
+                                ? props?.currentCard
+                                : "Waiting"}
                         </Typography>
                     </CardContent>
                 </React.Fragment>

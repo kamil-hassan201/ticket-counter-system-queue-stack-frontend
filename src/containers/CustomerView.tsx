@@ -7,13 +7,14 @@ import Grid from "@mui/material/Grid";
 
 interface CustomerViewProps {
     counters: TCounter[] | undefined;
+    data: apiDataType | undefined;
 }
 
 export default function CustomerView(props: CustomerViewProps) {
     return (
         <Box sx={{ my: 5, border: 3, px: 5, pt: 2 }}>
             <Typography variant="h5"> CustomerView</Typography>
-            <DisplayCard />
+            <DisplayCard data={props.data} />
             <Grid container spacing={2} sx={{ my: 3 }}>
                 {props.counters?.map((counter) => (
                     <CustomerCounter {...counter} />

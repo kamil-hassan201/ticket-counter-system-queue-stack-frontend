@@ -7,7 +7,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ENVIRONMENT from "../environment";
 
-export default function DisplayCard() {
+interface DisplayCardProps {
+    data: apiDataType | undefined;
+}
+
+export default function DisplayCard(props: DisplayCardProps) {
     const [cardData, setCardData] = React.useState({ serving: 0, last: 0 });
     const [newCard, setNewCard] = React.useState<number>();
 
@@ -17,7 +21,7 @@ export default function DisplayCard() {
             .then((res) => {
                 setCardData(res);
             });
-    }, [newCard]);
+    }, [props.data, newCard]);
 
     const handleTakeANumber = () => {
         fetch(`${ENVIRONMENT.baseApi}/enqueue`)
