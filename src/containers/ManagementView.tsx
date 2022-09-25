@@ -4,13 +4,23 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ManagementCounter from "../components/ManagementCounter";
 
-export default function CounterManagement() {
+interface ManagementViewProps {
+    counters: TCounter[] | undefined;
+    handleGoOffline: (num: number) => void;
+    handleGoOnline: (num: number) => void;
+}
+
+export default function ManagementView(props: ManagementViewProps) {
     return (
         <Box sx={{ my: 5, border: 3, px: 5, pt: 2 }}>
             <Typography variant="h5"> Counter Management</Typography>
             <Grid container spacing={2} sx={{ my: 3 }}>
-                {[1, 2, 3, 4].map((counter) => (
-                    <ManagementCounter />
+                {props.counters?.map((counter) => (
+                    <ManagementCounter
+                        handleGoOffline={props.handleGoOffline}
+                        handleGoOnline={props.handleGoOnline}
+                        counter={counter}
+                    />
                 ))}
             </Grid>
         </Box>

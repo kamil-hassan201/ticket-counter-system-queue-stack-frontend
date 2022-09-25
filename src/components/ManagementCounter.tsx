@@ -7,14 +7,20 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-export default function ManagementCounter() {
+interface ManagementCounterProps {
+    counter: TCounter;
+    handleGoOffline: (num: number) => void;
+    handleGoOnline: (num: number) => void;
+}
+
+export default function ManagementCounter(props: ManagementCounterProps) {
     return (
         <Grid item xs={3}>
             <Card variant="outlined">
                 <React.Fragment>
                     <CardContent>
                         <Typography variant="h6" component="div">
-                            Counter: 1
+                            Counter: {props.counter.num}
                         </Typography>
                     </CardContent>
                     <Box
@@ -30,8 +36,15 @@ export default function ManagementCounter() {
                             sx={{ mx: "auto" }}
                             variant="outlined"
                             size="medium"
+                            onClick={() =>
+                                props.counter.status === "offline"
+                                    ? props.handleGoOnline(props.counter.num)
+                                    : props.handleGoOffline(props.counter.num)
+                            }
                         >
-                            Go Offline
+                            {props.counter.status === "offline"
+                                ? " Go Online"
+                                : "Go Off line"}
                         </Button>
                         <Button
                             sx={{ mx: "auto" }}

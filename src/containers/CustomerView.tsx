@@ -5,14 +5,18 @@ import { Typography } from "@mui/material";
 import CustomerCounter from "../components/CustomerCounter";
 import Grid from "@mui/material/Grid";
 
-export default function CustomerView() {
+interface CustomerViewProps {
+    counters: TCounter[] | undefined;
+}
+
+export default function CustomerView(props: CustomerViewProps) {
     return (
         <Box sx={{ my: 5, border: 3, px: 5, pt: 2 }}>
             <Typography variant="h5"> CustomerView</Typography>
             <DisplayCard />
             <Grid container spacing={2} sx={{ my: 3 }}>
-                {[1, 2, 3, 4].map((counter) => (
-                    <CustomerCounter />
+                {props.counters?.map((counter) => (
+                    <CustomerCounter {...counter} />
                 ))}
             </Grid>
         </Box>

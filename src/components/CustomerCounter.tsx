@@ -5,7 +5,16 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import CircleIcon from "@mui/icons-material/Circle";
 
-export default function CustomerCounter() {
+export default function CustomerCounter(props: TCounter) {
+    let color: "success" | "disabled" | "error" = "success";
+    if (props.status === "offline") {
+        color = "disabled";
+    } else if (props.status === "serving") {
+        color = "error";
+    } else if (props.status === "online") {
+        color = "success";
+    }
+
     return (
         <Grid item xs={3}>
             <Card variant="outlined">
@@ -13,13 +22,15 @@ export default function CustomerCounter() {
                     <CardContent>
                         <CircleIcon
                             sx={{ float: "right", mb: 2 }}
-                            color="success"
+                            color={color}
                         />
                         <Typography variant="h6" component="div">
-                            Counter: 1
+                            Counter: {props?.num}
                         </Typography>
                         <Typography variant="body1" component="div">
-                            Card Number
+                            {props?.status === "offline"
+                                ? "Off Line"
+                                : props?.currentCard}
                         </Typography>
                     </CardContent>
                 </React.Fragment>
